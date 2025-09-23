@@ -1,0 +1,43 @@
+{
+  "name": "@dada78641/cronbot-task-mangaplus",
+  "description": "MANGA Plus task for CronBot",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch src",
+    "check": "tsc -p ./tsconfig.json --noEmit",
+    "test": "vitest run",
+    "lint": "eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msikma/cronbot-task-mangaplus.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@dada78641/eslint-config": "^1.0.1",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.8.6",
+    "eslint": "^9.34.0",
+    "jiti": "^2.5.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@dada78641/cronbot": "^0.3.0",
+    "@dada78641/nyabby": "^0.1.2",
+    "cheerio": "^1.0.0",
+    "discord.js": "^14.16.3"
+  }
+}
