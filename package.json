@@ -35,7 +35,7 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@dada78641/cronbot": "^0.3.0",
+    "@dada78641/cronbot": "^0.3.1",
     "@dada78641/nyabby": "^0.1.2",
     "cheerio": "^1.0.0",
     "discord.js": "^14.16.3"
