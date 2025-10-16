@@ -69,7 +69,7 @@ function getMangaPlusChapterUrl(chapter: string): string {
  */
 async function fetchMangaPlusHtml(title: string): Promise<string | null> {
   const url = getMangaPlusUrl(title)
-  const text = await fetchPuppeteer(url, 'main[class^="TitleDetail-"]')
+  const text = await fetchPuppeteer(url, 'main[class^="TitleDetail-module_main"], section[class^="TitleDetail-module_main"]')
   // const text = await fs.readFile('./_test/mangaplus/mangaplustest.html', 'utf8')
   return text
 }
@@ -110,13 +110,13 @@ function getChapterData(imageDataSrc?: string) {
  * Extracts manga chapters from the html.
  */
 async function extractMangaChapters($: cheerio.CheerioAPI, mangaId: string, mangaInfo: MangaInfo): Promise<MangaPlusPostData[]> {
-  const main = $('main[class^="TitleDetail-"]')
-  const items = $('> div > div[class^="ChapterListItem-"] > div:first-child', main).get()
+  const main = $('main[class^="TitleDetail-module_main"], section[class^="TitleDetail-module_main"]')
+  const items = $('> div > div[class^="ChapterListItem-"] > div:first-child, > section > div > div[class^="ChapterListItem-"] > div:first-child', main).get()
   const chapters = []
   for (const item of items) {
     const title = $('p[class*="ChapterListItem"][class*="title"]', item)
     const date = $('p[class*="ChapterListItem"][class*="date"]', item)
-    const image = $('> img[alt="thumbnail"]', item)
+    const image = $('img[alt="thumbnail"]', item)
     const chapter = getChapterData(image.attr('data-src'))
     if (chapter === null) {
       continue
