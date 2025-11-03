@@ -69,7 +69,7 @@ function getMangaPlusChapterUrl(chapter: string): string {
  */
 async function fetchMangaPlusHtml(title: string): Promise<string | null> {
   const url = getMangaPlusUrl(title)
-  const text = await fetchPuppeteer(url, 'main[class^="TitleDetail-module_main"], section[class^="TitleDetail-module_main"]')
+  const text = await fetchPuppeteer(url, 'main[class^="TitleDetail-module_main"], section[class^="TitleDetail-module_main"]', true)
   // const text = await fs.readFile('./_test/mangaplus/mangaplustest.html', 'utf8')
   return text
 }
